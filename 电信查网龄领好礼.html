@@ -1,0 +1,477 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="text/javascript">
+       window.trkPageStart = new Date().getTime();
+    </script>
+    <meta charset="utf-8">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="Wed, 26 Feb 1997 08:21:57 GMT" />
+    <meta http-equiv="Cache-Control" content="no-cache,must-revalidate" />
+    <meta name="format-detection" content="telephone=no" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="http://image1.chinatelecom-ec.com/client/wap/telecomStory/css/common.css">
+    <script src="http://image1.chinatelecom-ec.com/client/wap/common/js/jquery-1.9.1.js"></script>
+    <script type="text/javascript" src="http://image1.chinatelecom-ec.com/wapactivity/common/js/tools_wapactivity.js"></script>
+    <script type="text/javascript" src="http://image1.chinatelecom-ec.com/wapactivity/netAgeGift//js/netAgeGift.js"></script>
+    <style type="text/css">
+    *{ margin: 0; padding: 0;}
+    ul, li {list-style: none;}
+    body,html{height: 100%; background-color: #3b4771;}
+    .netAgeGiftBox{ width: 100%;background: url('http://image2.chinatelecom-ec.com/wapactivity/netAgeGift/images/mainbg_v1.png') 50% 50% no-repeat; background-size: 100% 100%; padding: 12px 0 30px;}
+    .netAgeGiftBox .phoneNum{width: 12.5rem; margin-left: 15%; height: 34px; border-radius: 6px; border: 2px solid #ffcb11; text-align: center; font-size: 13px;}
+    .netAgeGiftBox .phoneNum_code{ width: 37%; margin-left: 15%; height: 34px; border-radius: 6px; border: 2px solid #ffcb11; text-align: center; font-size: 13px; vertical-align: text-bottom; margin-top: 12px;}
+    .netAgeGiftBox .phoneNum_codeBtn{ width: 30%; background: #ffcb11; height: 34px; font-weight: 600; border-radius: 6px; border: 2px solid #ffcb11; text-align: center; color: #3e4b75; font-size: 13px; line-height: 36px; display: inline-block; vertical-align: text-bottom;}
+    .netAgeGiftBox .phoneNum_codeBtn1{ width: 30%; background: #ffcb11;height: 34px; font-weight: 600; border-radius: 6px; border: 2px solid #ffcb11; text-align: center; color: #fff; font-size: 13px; line-height: 36px; display: inline-block; vertical-align: text-bottom;}
+    .netAgeGiftBox .netAgeGift_searchBtn{ width: 44%; margin-left: 28%; height: 40px; background: #ffcb11; border-radius: 22px; border: none; font-weight: 600; color: #3b4771; font-size: 18px; text-align: center; margin-top: 12px;}
+    .netAgeGiftBox .netAgeGift_ruleBtn{display: block; font-size: 15px; background: transparent; border: 2px solid #ffcb11; border-radius: 30px; width: 26%; height: 38px; color: #ffcb11; font-weight: 500; margin: 1rem auto 0; }
+    /* 活动规则弹窗 */
+    .netAgeGift_ruleBox{position: fixed; top: 0; background: rgba(0,0,0,.3); height: 100%; width: 100%; display: none;}
+    .netAgeGift_ruleMain{width: 90%; margin-left: 5%; background: #3a4670; border-radius: 8px; border: 2px solid #fff; position: absolute; top: 16%; padding-bottom: 1rem; overflow-y: scroll; max-height: 60%;}
+    .netAgeGift_ruleTitle{font-size: 0.88rem; line-height: 2.5rem; color: #fff; text-align: center; margin-top: 0.6rem;}
+    .netAgeGift_ruleDes{width: 92%; margin-left: 4%; color: #fff; font-size: 0.68rem; line-height: 1.5rem;}
+    .ruleBox_closeBtn{position: absolute; width: 30px; height: 30px; bottom: 14%; left: 50%; margin-left: -17px;}
+    /* 参与记录弹窗 */
+    .netAgeGift_recordBox{position: fixed; top: 0; background: rgba(0,0,0,.3); height: 100%; width: 100%; display: none;}
+    .netAgeGift_recordMain{width: 90%; margin-left: 5%; background: #3a4670; border-radius: 8px; border: 2px solid #fff; padding-bottom: 20px; position: absolute; top: 30%;}
+    .recordBox_title{text-align: center; color: #fff; font-size: 18px; line-height: 36px; font-weight: 600; margin-top: 8px;}
+    .recordBox_list{width: 90%; margin-left: 5%;}
+    .recordBox_list li{border-top: 1px solid #828284; margin-top: 8px;}
+    .recordBox_list li div{font-size: 0;}
+    .recordBox_list li p{line-height: 36px; color: #fff; font-size: 13px;}
+    .recordBox_list li div span{display: inline-block; font-size: 15px;}
+    .recordBox_list li div>.name{text-align: left; width: 57%; color: #fff;}
+    .recordBox_list li div>.state{text-align: right; width: 40%; color: #ffcb11;}
+    .recordBox_closeBtn{position: absolute; width: 30px; height: 30px; bottom: -44px; left: 50%; margin-left: -17px;}
+    /* 图片验证码 */
+    .netAgeGift_entryBox{display: none;position: fixed; top: 0; background: rgba(0,0,0,.3); height: 100%; width: 100%;}
+    .netAgeGift_entryBox>div{ width: 84%; margin-left: 7.5%; background: #3a4670; border-radius: 8px; border: 2px solid #fff; position: absolute; top: 25%; overflow: hidden;}
+    .entryBtn{width: 70%; margin: 1rem 15% 0; height: 40px;border-radius: 6px; border: 2px solid #ffcb11;}
+    .netAgeGift_entryNum{width: 70%; margin: 1rem 0 1rem 15%; height: 40px; border-radius: 6px; border: 2px solid #ffcb11; text-align: center; font-size: 13px; background: #fff;}
+    .entryBox_codeNumBtn{width: 44%; margin-left: 28%; height: 40px; background: #ffcb11; border-radius: 22px; border: none; font-weight: 600; color: #3b4771; font-size: 17px; text-align: center; margin-bottom: 30px;}
+    .netAgeGift_entryBox span{display: inline-block; width: 6%;}
+    .netAgeGift_entryBox span img{width: 0.88rem; display: none;}
+    /* 提示语 */
+    .netAgeGift_error{display: none; width: 50%;background: rgba(0,0,0,.6); color: #f6d85d; font-size: 16px; padding: 0.8rem 0; border-radius: 5px; position: fixed; top: 62%; left: 25%; z-index:100;}
+    .netAgeGift_error p{text-align: center;}
+    /* 提示弹框 */
+    .netAgeGift_errorBox{position: fixed; top: 0; background: rgba(0,0,0,.3); height: 100%; width: 100%; display: none;}
+    .netAgeGift_errorBox>div{width: 84%; margin-left: 7.5%; background: #3a4670; border-radius: 8px; border: 2px solid #fff; position: absolute; top: 25%; overflow: hidden;}
+    .netAgeGift_errorBox p{text-align: center; margin: 30px 0; font-size: 17px; color: #fff;}
+    .netAgeGift_errorBox .knowBtn{width: 44%; margin-left: 28%; height: 40px; background: #ffcb11; border-radius: 22px; border: none; font-weight: 600; color: #3b4771; font-size: 17px; text-align: center; margin-bottom: 30px;}
+    /* 联系客服 */
+    .netAgeGift_callCenter{width: 5rem; position: fixed; top: 1rem; right: 1.5rem;}
+    </style>
+    <script type="text/javascript">
+        var netAgeGiftCheckView = {
+            data: tools.getParam()||{},//截参，获取ticket
+            sessData: JSON.parse(sessionStorage.getItem('data')) || {},//获取sessionStorage里的data数据
+            flag: false,
+            init: function(){
+                (function(global){
+                      function remChange(){
+                          document.documentElement.style.fontSize=20*document.documentElement.clientWidth/360+'px';
+                      }
+                      remChange();
+                      global.addEventListener('resize',remChange,false);
+                  })(window); 
+
+                if(tools.getPhoneType() == 1 &&tools.isWeiXin()){
+                    document.body.addEventListener('focusout', function () {
+                        window.scrollTo(0,0);
+                    })
+                }
+                if(!tools.isNull(netAgeGiftCheckView.data.jsdxParam)){//有单点参数直接跳结果页
+                	netAgeGiftCheckView.ticketLogin();
+                }
+               	netAgeGiftCheckView.addEvent();//页面事件
+                netAgeGiftCheckView.initRandom();//初始化验证码
+            },
+            //单点登录
+            ticketLogin: function(){
+            	param = {
+            		'jsdxParam': netAgeGiftCheckView.data.jsdxParam
+            	}
+            	tools.doAjax('netAgeTicketLogin', param, function (data) {
+                    if (data.headerInfo.code === 'W_0000' && data.responseContent.serviceCode === '0') {
+                        //接口调用成功
+                        if(data.responseContent.checkCode != '3000'){
+                        	if(data.responseContent.checkCode == '1000'){
+                        		$(".netAgeGift_errorBox").show();
+                                $(".netAgeGift_errorBox p").html('').html('十分抱歉，小礼物与您擦肩而过了~');
+                        	}else{
+                        		sessionStorage.setItem('data', JSON.stringify(data.responseContent));//保存数据
+                                window.location = '../netAgeGift/netAgeGift_result.html';
+                        	}
+                        }
+                    } else {
+                        //接口调用失败
+                        to404()
+                    }
+                }, function (data) {
+                    //接口调用失败
+                    to404()
+                }, function (data) {
+                    //接口调用失败
+                    to404()
+                }, true, true);
+            },
+            //页面事件
+            addEvent: function(){
+                //点击图片验证码
+                $(".entryBtn").off('click').on('click',function(){
+                    netAgeGiftCheckView.getCheckCode(); //获取验证码
+                });
+                //点击图片验证码弹窗-'获取验证码'
+                $(".entryBox_codeNumBtn").off('click').on('click',function(){
+                	netAgeGiftCheckView.checkCode();//验证校验码
+                });
+                //点击'一键查网龄'
+                $(".netAgeGift_searchBtn").off('click').on('click',function(){
+                    if(tools.isNull($('.phoneNum').val())){
+                        netAgeGiftCheckView.showError('请输入手机号');
+                        return false;
+                    }else if(!tools.isTelecomPhone($('.phoneNum').val())){
+                        netAgeGiftCheckView.showError('请输入正确的电信手机号');
+                        return false;
+                    }else if(tools.isNull($('.phoneNum_code').val())){
+                        netAgeGiftCheckView.showError('请输入验证码');
+                        return false;
+                    }else{
+                        netAgeGiftCheckView.checkAgeFun();//一键查网龄
+                    }
+                });
+                //点击'活动规则'
+                $(".netAgeGift_ruleBtn").off('click').on('click',function(){
+                    $(".netAgeGift_ruleBox").show();
+                    $('body').css({'height':'100%','overflow':'hidden'});
+                });
+                //点击活动规则关闭按钮
+                $(".ruleBox_closeBtn").off('click').on('click',function(){
+                    $(".netAgeGift_ruleBox").hide();
+                    $('body').css({'height':'100%','overflow':'auto'});
+                });
+                //点击'参与记录'
+                $(".netAgeGift_recordBtn").off('click').on('click',function(){
+                    $(".netAgeGift_recordBox").show();
+                    $('body').css({'height':'100%','overflow':'hidden'});
+                });
+                //点击参与记录弹窗关闭按钮
+                $(".recordBox_closeBtn").off('click').on('click',function(){
+                    $(".netAgeGift_recordBox").hide();
+                    $('body').css({'height':'100%','overflow':'auto'});
+                });
+                //点击'知道了'
+                $(".knowBtn").off('click').on('click',function(){
+                    $(".netAgeGift_errorBox").hide();
+                });
+                $(".netAgeGift_callCenter>img").off('click').on('click',function(){
+                	window.location = 'https://lm.189.cn/kefublank/kefublank_index.html?manId=1432&sourcId=jt-not-xiadan';
+                });
+            },
+            //显示提示语
+            showError: function(tip){
+                $('.netAgeGift_error').show();
+                $('.netAgeGift_error>p').html(tip).show();
+                netAgeGiftCheckView.setTimeFun();
+            },
+            //延时3秒后，清空、隐藏提示语
+            setTimeFun: function(){
+                setTimeout(function () {
+                    $('.netAgeGift_error>p').html('').hide();
+                    $('.netAgeGift_error').hide();
+                }, 3000);
+            },
+            //获取sessionid
+            getSessionid: function () {
+                var toolsObj = {
+                    ajaxUrl:'/common/getCommonSri.do',
+                }
+                sessionStorage.setItem('toolsObj',JSON.stringify(toolsObj));
+                tools.doAjax("commonCreateSessionId", {}, function (data) {
+                    if (data.headerInfo.code == 'W_0000' && data.responseContent.serviceCode == '0') {
+                        netAgeGiftCheckView.sessData.sessionid = data.responseContent.sessionid; //sessionid
+                        netAgeGiftCheckView.getCheckCode(); //获取验证码
+                    } else {
+                        netAgeGiftCheckView.showError(data.message);
+                    }
+                }, function () {
+                    netAgeGiftCheckView.showError('系统繁忙，请稍后再试');
+                }, function () {
+                    netAgeGiftCheckView.showError('系统繁忙，请稍后再试');
+                }, true, true)
+            },
+            //获取校验码
+            getCheckCode: function(){
+                netAgeGiftCheckView.checkFalg = false;  // 重置 校验通过标识
+                var sessionid = netAgeGiftCheckView.sessData.sessionid;
+                var imgUrl = '/common/getCommonPicRandomCode.do?type=1&sessionid=' + sessionid + '&colorType=white' + '&time=' + new Date();
+                $('.entryBtn').attr('src', imgUrl); //图形展示
+                $(".netAgeGift_entryBox").show();
+            },
+            //验证校验码
+            checkCode: function(){
+                if(tools.isNull($('.netAgeGift_entryNum').val())){
+                    netAgeGiftCheckView.showError('请输入随机验证码');
+                    return false;
+                }
+                $("#phoneNum_codeBtn").click();
+                
+                /* var toolsObj = {
+                    ajaxUrl:'/common/getCommonSri.do',
+                }
+                sessionStorage.setItem('toolsObj',JSON.stringify(toolsObj));
+                //入参
+                var param = {
+                    "sessionid": netAgeGiftCheckView.sessData.sessionid || '',     //sessionid
+                    "randomcode": $(".netAgeGift_entryNum").val()    //页面输入校验码
+                };
+                tools.doAjax("commonRandomCodeVerify", param, function (data) {
+                    if (data.headerInfo.code == 'W_0000' && data.responseContent.serviceCode == '0') {
+                        if (data.responseContent.result) {
+                            netAgeGiftCheckView.checkFalg = true;             //验证码校验成功
+                            //展示对
+                            $('.entry_check').attr('src', 'https://www.189.cn/client/wap/activationv4/images/entry_right.png').show();
+                            var toolsObj = {
+                                ajaxUrl:'/common/netAge.do',
+                            }
+                            sessionStorage.setItem('toolsObj',JSON.stringify(toolsObj));
+                            $("#phoneNum_codeBtn").click();
+                            $(".netAgeGift_entryBox").hide();
+                        } else {
+                            netAgeGiftCheckView.errHandler();//验证码校验错误
+                        }
+                    } else {
+                        netAgeGiftCheckView.errHandler();//验证码校验错误
+                    }
+                }, function () {
+                    netAgeGiftCheckView.errHandler();//验证码校验错误
+                }, function () {
+                    netAgeGiftCheckView.errHandler();//验证码校验错误
+                }, true, true); */
+            },
+            //报错异常处理
+            errHandler: function (errMsg) {
+                if (tools.isNull(errMsg)) {
+                    //展示错
+                    $('.entry_check').attr('src', 'https://www.189.cn/client/wap/activationv4/images/entry_wrong.png').show();
+                } else {
+                    $('.entry_check').hide();       //隐藏验证图片对
+                    netAgeGiftCheckView.showError(errMsg);  //展示错误提示
+                }
+                netAgeGiftCheckView.getCheckCode(); //重新刷新验证码
+            },
+            //一键查网龄
+            checkAgeFun: function(){
+                var toolsObj = {
+                    ajaxUrl:'/common/netAge.do',
+                }
+                sessionStorage.setItem('toolsObj',JSON.stringify(toolsObj));
+                var param = {
+                    "phoneNumber": $(".phoneNum").val(),
+                    "type": "1",
+                    "verifyCode": $(".phoneNum_code").val()
+                }
+                tools.doAjax('netAgeUserLogin', param, function (data) {
+                    if (data.headerInfo.code === 'W_0000' && data.responseContent.serviceCode === '0') {
+                        //接口调用成功
+                        if(data.responseContent.checkCode == '1000'){//校验通过 非目标用户
+                            $(".netAgeGift_errorBox").show();
+                            $(".netAgeGift_errorBox p").html('').html('十分抱歉，小礼物与您擦肩而过了~');
+                        }else{
+                            sessionStorage.setItem('data', JSON.stringify(data.responseContent));//保存数据
+                            window.location = '../netAgeGift/netAgeGift_result.html';
+                        }
+                    } else {
+                        //接口调用失败
+                        netAgeGiftCheckView.showError(data.message);
+                    }
+                }, function (data) {
+                    //接口调用失败
+                    to404()
+                }, function (data) {
+                    //接口调用失败
+                    to404()
+                }, true, true);
+            },
+            //初始化验证码
+            initRandom: function(){
+                var toolsObj = {
+                    ajaxUrl:'/common/netAge.do',
+                }
+                sessionStorage.setItem('toolsObj',JSON.stringify(toolsObj));
+                var s = {
+                        target : $('#phoneNum_codeBtn'),    //jQuery 对象(错误目标)
+                        html : '获取验证码',
+                        loadHtml : '#random#s后重新获取',     //倒计时hmtl 
+                        funCode : 'netAgeSendMessage',   //请求functionCode
+                        param : {},                       //请求入参
+                        btnClass:'phoneNum_codeBtn',
+                        reClass:'phoneNum_codeBtn1',
+                        callBack : function(data){
+                            if(data.responseContent.result){
+                                $(".netAgeGift_entryBox").hide();
+                                var count = 60;
+                                var randomTimer = setInterval(function(){
+                                    if(count == 0){
+                                        netAgeGiftCheckView.flag=false;
+                                      clearInterval(randomTimer);
+                                    }else{
+                                      count--;
+                                    }
+                                },1000);
+                                //接口返回
+                                if(tools.isNull(data.headerInfo)){
+                                    netAgeGiftCheckView.showError(data.message);
+                                }else{
+                                    if(data.headerInfo.code == 'W_0000'){
+                                        if(data.responseContent.serviceCode == '0'){
+                                        }else{
+                                            netAgeGiftCheckView.showError(data.responseContent.serviceMessage);
+                                        }
+                                    }else{
+                                        netAgeGiftCheckView.showError(data.headerInfo.message);
+                                    }
+                                }
+                            }else {
+                            	if(data.headerInfo.code == 'W_0011'){
+                            		netAgeGiftCheckView.showError(data.headerInfo.message);
+                            	}else{
+                            		netAgeGiftCheckView.showError('验证码错误');
+                                    //$('.entry_check').attr('src', 'http://image2.chinatelecom-ec.com/wapactivity/netAgeGift/images/entry_wrong.png').show();
+                                    netAgeGiftCheckView.getSessionid();//获取图片验证码
+                            	}
+                            }
+                        },
+                        before : function(){
+                            //接口调用之前，用于对手机号校验，return false  回跳出，阻止接口调用
+                            var phoneNum = $('.phoneNum').val();
+                            if(tools.isNull(phoneNum)){
+                                netAgeGiftCheckView.showError('请输入手机号码');
+                                return false;
+                            }else if(!tools.isPhoneNumber(phoneNum)){
+                                netAgeGiftCheckView.showError('请输入正确手机号码');
+                                return false;
+                            }else if(!tools.isTelecomPhone(phoneNum)){
+                                netAgeGiftCheckView.showError('请输入电信手机号码');
+                                return false;
+                            }else{
+                                // 验证随机验证码
+                                if(netAgeGiftCheckView.flag){
+                                    netAgeGiftCheckView.sessData.phoneNum=$('.phoneNum').val();
+                                    rb.settings.param= {
+                                        "sessionid": netAgeGiftCheckView.sessData.sessionid,
+                                        "id": phoneNum,
+                                        "type": "1",
+                                        "randomcode": $('.netAgeGift_entryNum').val()
+                                    };
+                                }else{
+                                    netAgeGiftCheckView.getSessionid();//获取图片验证码
+                                    netAgeGiftCheckView.flag=true;
+                                    return false;
+                                }
+                            }
+
+                        }
+                    };
+                    //生成验证码
+                    var rb = new randomBtn(s);
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="banner">
+      <img src="http://image2.chinatelecom-ec.com/wapactivity/netAgeGift/images/banner_v1.png" width="100%">
+    </div>
+    <div class="netAgeGiftBox">
+        <input type="number" class="phoneNum" placeholder="请输入有效的中国电信互联网卡号码">
+        <input type="number" placeholder="请输入验证码" class="phoneNum_code">
+        <span id="phoneNum_codeBtn" class="phoneNum_codeBtn"></span>
+        <input type="button" class="netAgeGift_searchBtn" value="一键查网龄">
+        <input type="button" class="netAgeGift_ruleBtn" value="活动规则">
+    </div>
+    <!-- 活动规则 弹窗 -->
+    <div class="netAgeGift_ruleBox">
+        <div class="netAgeGift_ruleMain">
+            <p class="netAgeGift_ruleTitle">活动规则</p>
+            <p class="netAgeGift_ruleDes">
+				1、促销期：2019年8月7日-2019年12月31日。<br><br>
+				2、本活动仅限指定的电信互联网卡套餐领取，号码如处于黑名单、欠费停机、停机保号等异常状态，需用户缴清费用后，方可参加活动。 <br> <br>
+				3、用户网龄以用户当前互联网卡套餐激活时间为起点计算，如用户由其他套餐变更至互联网卡套餐，则以变更后套餐的激活时间为起点计算网龄。<br> <br>
+				4、用户网龄3个月≤X＜6个月，可领取 爱奇艺周卡/优酷周卡/5元话费（三选一）<br>
+				①爱奇艺/优酷周卡在领取成功后48小时内到账，权益自到账之日起生效，有效期7天。<br>
+				②5元话费次月月底之前到账，赠送话费不退返现金，不可抵扣国际业务、港澳台业务通信费和SP/CP等代收费用，有效期30天，可结转。<br><br>
+				5、用户网龄6个月≤X＜9个月，可领取 腾讯月卡/爱奇艺月卡/优酷月卡/2G通用流量*1个月（四选一） <br>
+				①腾讯/爱奇艺/优酷月卡领取成功后48小时内到账，权益自到账之日起生效，有效期30天。<br>
+				②2G通用流量次月月底之前到账，赠送流量仅限本机号码使用，有效期30天，可结转。<br><br>
+				6、用户网龄9个月≤X＜12个月，可领取喜马拉雅会员*2个月/200分钟语音时长*1个月（二选一） <br>
+				①200分钟语音时长次月月底之前到账，赠送语音仅限本机号码使用，有效期30天，可结转。<br>
+				②喜马拉雅会员领取成功后分2个月发放，首次发放将于参加活动成功后48小时内，剩余会员权益次月起按月发放（月卡），连续发放1个月。<br><br>
+				7、用户网龄X≥12个月，可领取 腾讯半年卡/爱奇艺半年卡/优酷半年卡（三选一） <br>
+				腾讯/爱奇艺/优酷半年卡领取成功后分6个月发放，首次发放将于参加活动成功后48小时内，剩余会员权益次月起按月发放（月卡），连续发放5个月。<br><br>
+				8、用户参与本活动成功后，号码如处于黑名单、欠费停机、停机保号、拆机等异常状态，则剩余赠送话费或权益将无法继续赠送。 <br><br>
+				9、此链接转发无效，仅限本号码参与。 <br><br>
+				温馨提示：<br>
+				一、爱奇艺、优酷、喜马拉雅会员领取注意事项：<br>
+				请使用活动手机号码登陆/注册账号。<br>
+				二、腾讯视频-手机号领取会员说明<br>
+				场景一：活动手机号已绑定QQ或微信号<br>
+				1.打开短信内链接，使用QQ或微信登陆腾讯视频。<br>
+				2.快到腾讯视频账号里领取礼品啦。<br>
+				场景二：活动手机号未绑定QQ或微信号<br>
+				1.打开短信内链接，使用QQ或微信登陆腾讯视频。<br>
+				2.输入手机号及验证码完成手机账号的绑定。<br>
+				3.快到腾讯视频账号里领取礼品啦。<br>
+				注：手机号验证后将自动绑定当前微信或QQ账号。<br>
+				其他领取方式及流程<br>
+				1.APP内领取：打开腾讯视频 APP->我的->个人信息->手机，领取会员权益<br>
+				2.公众号内领取：关注【腾讯视频 VIP】公众号，点击菜单 VIP 服务->我的 VIP，找到“手 机号内 VIP 兑换”，领取会员权益。<br>
+				三、5元话费、200分钟语音时长、2G通用流量领取注意事项：<br>
+				只有活动手机号码才可领取相应权益哦！<br>
+	        </p>
+        </div>
+        <img src="http://image2.chinatelecom-ec.com/wapactivity/netAgeGift/images/close.png" class="ruleBox_closeBtn">
+    </div>
+    <!-- 图形验证码弹窗 -->
+    <div class="netAgeGift_entryBox">
+        <div>
+            <img src="" class="entryBtn">
+            <input type="number" class="netAgeGift_entryNum" placeholder="请输入图片验证码">
+            <span>
+                <img class="entry_check" src="">
+            </span>
+            <input type="button" class="entryBox_codeNumBtn" value="获取验证码">
+        </div>
+    </div>
+    <!-- 提示语 -->
+    <div class="netAgeGift_error">
+        <p></p>
+    </div>
+    <!-- 提示弹窗 -->
+    <div class="netAgeGift_errorBox">
+        <div>
+            <img src="http://image2.chinatelecom-ec.com/wapactivity/netAgeGift/images/fail.png" width="100%">
+            <p></p>
+            <input type="button" class="knowBtn" value="知道了">
+        </div>
+    </div>
+    <!-- 客服 -->
+    <div class="netAgeGift_callCenter">
+		<img src="http://image2.chinatelecom-ec.com/wapactivity/netAgeGift/images/jqr.png" width="100%">
+	</div>
+    <script type="text/javascript">
+        $(function () {
+            netAgeGiftCheckView.init();
+        });
+    </script>
+    <script type="text/javascript">
+        window.trkPageEnd = new Date().getTime();
+    </script>
+    <script type="text/javascript"src="http://www.189.cn/client/wap/common/js/s_code.js"></script>
+</body>
+</html>
